@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 
 // react.createElement => react element or object created by react=> root.render converts object into html elements
 const heading = React.createElement("h1", { id: "head" }, "hello there");
