@@ -48,7 +48,7 @@ body .Body{
   margin-left: 20px;
 }
 .card{
-  height: 230px;
+  /* height: 230px; */
   width: 220px;
   /* border: 1px solid black; */
   border-radius: 10px;
@@ -72,7 +72,6 @@ body .Body{
   object-fit: contain;
   margin: 0px;
 }
-
 .res_cards{
   display: flex;
   flex-wrap: wrap;
