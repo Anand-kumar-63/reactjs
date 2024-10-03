@@ -4,7 +4,7 @@ import reslist from "../utils/data";
 import Cards from "./cards";
 import { useEffect, useState } from "react";
 import reslist from "../utils/data";
-
+import Shimmer from "./shimmer";
 const Body = () => {
   // call back function use effect
  useEffect(()=>{fetchdata();},[]);
@@ -19,7 +19,8 @@ const Body = () => {
     console.log(fuck);
 
     // now use this real time data on website by updating the listofrestaurant::
-    setlistofrestaurants(fuck?.data?.cards[2]?.card?.card?.gridElements?.infoWithstyle?.restaurants || []);
+    // optional chaining
+    // setlistofrestaurants(fuck?.data.cards[2].card.card.gridElements.infoWithstyle.restaurants || []);
   };
   
   // this is a Normal js variable
@@ -55,8 +56,13 @@ const Body = () => {
   //   },
   // ];
 
+  
   // state variable - super powerfull variable:
   let [listofrestaurants, setlistofrestaurants] = useState(reslist);
+
+  if(listofrestaurants.length===0){
+    return <Shimmer />;
+  };
   return (
     <div className="Body">
       {/* updating the list of restaurants by using filter those restaurants having rating greater than 4 on clicking the button::*/}

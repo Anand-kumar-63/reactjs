@@ -79,3 +79,14 @@ body .Body{
   gap: 10px;
   padding-left: 30px;
 }
+.shcards{
+  width: 220px;
+  border-radius: 10px;
+  padding: 0px 5px;
+  margin: 10px 10px;
+  background-color: #535252;
+}
+.shimmer_cont{
+  display: flex;
+  flex-wrap: wrap;
+}
