@@ -2,14 +2,26 @@
 
 import reslist from "../utils/data";
 import Cards from "./cards";
-import { useState,useeffect } from "react";
+import { useEffect, useState } from "react";
 import reslist from "../utils/data";
 
 const Body = () => {
+  // call back function use effect
+ useEffect(()=>{fetchdata();},[]);
 
-useeffect
+  const fetchdata = async () => {
+    const fuck = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.99740&lng=79.00110&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    ).then(response=>(response.json())).catch(err=>console.log("error:",err));
+    // // convert this data to json
+    // const json = await data.json();
+    // console.log(json);
+    console.log(fuck);
 
-
+    // now use this real time data on website by updating the listofrestaurant::
+    setlistofrestaurants(fuck?.data?.cards[2]?.card?.card?.gridElements?.infoWithstyle?.restaurants || []);
+  };
+  
   // this is a Normal js variable
   // let listofrestaurants = [
   //   {
