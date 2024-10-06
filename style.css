@@ -3,12 +3,13 @@
   padding: 0;
 }
 .header{
+  margin: 10px;
   display: flex;
   flex-direction: row;
   border: 1px solid black;
   align-items: center;
   height: 6rem;
-  width: 100%;
+  width: 98.2%;
   justify-content: space-between;
 }
 .logo{
@@ -39,10 +40,10 @@
   padding-right: 4rem;
 }
 body .Body{
-  /* border: 1px solid red; */
+  border: 1px solid rgb(0, 0, 0);
   border-radius: 5px;
   padding: 5px;
-  margin: 5px;
+  margin: 10px;
 }
 .Body .searchbar{
   margin-left: 20px;
@@ -51,10 +52,10 @@ body .Body{
   /* height: 230px; */
   width: 220px;
   /* border: 1px solid black; */
-  border-radius: 10px;
+  border-radius: 4px;
   padding: 0px 5px;
   margin: 10px 10px;
-  background-color:lightblue;
+  background-color:rgb(132, 150, 156);
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-size:small;
 }
@@ -77,7 +78,7 @@ body .Body{
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  padding-left: 30px;
+  padding-left: 0px;
 }
 .shcards{
   width: 220px;
@@ -89,4 +90,27 @@ body .Body{
 .shimmer_cont{
   display: flex;
   flex-wrap: wrap;
+}
+.log_btn{
+  padding: 8px 30px;
+  margin-right: 20px;
+  border-radius: 10px;
+  border: 1px solid rgb(235, 235, 216);
+  background-color: #686864;
+  color: rgb(8, 8, 8);
+  font-size: 20px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.log_btn:hover{
+  scale: 1.05;
+}
+.navitems{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.filters{
+  display: flex;
+  flex-direction:row;
+  gap: 30px;
 }

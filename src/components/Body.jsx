@@ -5,24 +5,33 @@ import Cards from "./cards";
 import { useEffect, useState } from "react";
 import reslist from "../utils/data";
 import Shimmer from "./shimmer";
+
 const Body = () => {
   // call back function use effect
- useEffect(()=>{fetchdata();},[]);
+  // useEffect(() => {
+  //   fetchdata();
+  // }, []);
 
-  const fetchdata = async () => {
-    const fuck = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.99740&lng=79.00110&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    ).then(response=>(response.json())).catch(err=>console.log("error:",err));
-    // // convert this data to json
-    // const json = await data.json();
-    // console.log(json);
-    console.log(fuck);
+  // const fetchdata = async () => {
+  //   const dot = await fetch(
+  //     "https://www.swiggy.com/mapi/homepage/getCards?lat=28.75726989999999&lng=77.4971405"
+  //   )
+  //     .then((response) => response.json())
+  //     .catch((err) => console.log("error:", err));
+  //   // convert this data to json
+  //   // const json = await dot.json();
+  //   console.log(dot);
+  //   // console.log(
+  //   //   dot?.data.success.cards[2].gridwidget.gridElements.infoWithStyle
+  //   //     .restaurants
+  //   // );
 
-    // now use this real time data on website by updating the listofrestaurant::
-    // optional chaining
-    // setlistofrestaurants(fuck?.data.cards[2].card.card.gridElements.infoWithstyle.restaurants || []);
-  };
-  
+  //   // now use this real time data on website by updating the listofrestaurant::
+  //   // setlistofrestaurants(dot?.data.success.cards[2].gridwidget.gridElements.infoWithStyle.restaurants.info);
+  //   // filteredlistofrestaurants(dot?.data.success.cards[2].gridwidget.gridElements.infoWithStyle.restaurants);
+  // };
+
+  console.log("rerdendered");
   // this is a Normal js variable
   // let listofrestaurants = [
   //   {
@@ -53,32 +62,61 @@ const Body = () => {
   //       parentId: "26828",
   //       totalRatingsString: "570",
   //     },
-  //   },
-  // ];
+  //   }];
 
-  
-  // state variable - super powerfull variable:
+  // this is a state variable - super powerfull variable:
   let [listofrestaurants, setlistofrestaurants] = useState(reslist);
 
-  if(listofrestaurants.length===0){
-    return <Shimmer />;
-  };
-  return (
+  // state variable for search button
+  // when state variable updates , react trigerrs reconcilation cycle and it rereders all the body components
+  const [kyah, setkyah] = useState([]);
+
+  return listofrestaurants.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div className="Body">
-      {/* updating the list of restaurants by using filter those restaurants having rating greater than 4 on clicking the button::*/}
-      <button
-        className="filter_btn"
-        onClick={() => {
-          filteredlistofrestaurants = listofrestaurants.filter(
-            (res) => res.info.avgRating > 4
-          );
-          console.log(filteredlistofrestaurants);
-          // updating the list of restuarants::by passing the filtered values of restaurants by filter method::
-          setlistofrestaurants(filteredlistofrestaurants);
-        }}
-      >
-        Top Rated Restaurants
-      </button>
+      <div className="filters">
+        <div className="searchbar">
+          <input
+            type="text"
+            id="text"
+            value={kyah}
+            onChange={(e) => {
+              setkyah(e.target.value);
+            }}
+          />
+          <button
+            className="search_btn"
+            onClick={() => {
+              // whenever you clicked the search button ui gets updated:: filter the list of restaurant card and update the ui::
+              const filteredlistofrestaurants = listofrestaurants.filter(
+                (res) => res.info.name.includes(kyah));
+
+                console.log(filteredlistofrestaurants);
+              
+              setlistofrestaurants(filteredlistofrestaurants);
+            }}
+          >
+            Search
+          </button>
+        </div>
+        {/* updating the list of restaurants by using filter those restaurants having rating greater than 4 on clicking the button::*/}
+        <button
+          className="filter_btn"
+          onClick={() => {
+            // we are using array dot filtered method to filter the list of restaurants::
+            let filteredlistofrestaurants = listofrestaurants.filter(
+              (res) => res.info.avgRating > 4
+            );
+            console.log(filteredlistofrestaurants);
+            // updating the list of restuarants::by passing the filtered values of restaurants by filter method::
+            setlistofrestaurants(filteredlistofrestaurants);
+          }}
+        >
+          Top Rated Restaurants
+        </button>
+      </div>
+
       <div className="res_cards">
         <div>
           {" "}
@@ -93,8 +131,8 @@ const Body = () => {
         </div>
 
         {/* now make it a simpler code by using js map function*/}
-        {listofrestaurants.map((restaurant, index) => (
-          <Cards key={index} resdata={restaurant} />
+        {listofrestaurants.map((restaurant) => (
+          <Cards key={restaurant.info.id} resdata={restaurant} />
         ))}
       </div>
     </div>

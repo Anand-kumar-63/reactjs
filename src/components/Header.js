@@ -1,5 +1,9 @@
+import { useState } from "react";
 // functional Component of Header
 const Header = () => {
+  // state variable
+  const [btnnameReact, setbtnnameReact] = useState("login");
+
   return (
     <div className="header">
       <div className="logo">
@@ -12,6 +16,14 @@ const Header = () => {
           <li>Cart</li>
           <li>Contact Us</li>
         </ul>
+        <button
+          className="log_btn"
+          onClick={() => {
+            btnnameReact === "login"? setbtnnameReact("logout"):setbtnnameReact("login")
+          }}
+        >
+          {btnnameReact}
+        </button>
       </div>
     </div>
   );
