@@ -66,6 +66,7 @@ const Body = () => {
 
   // this is a state variable - super powerfull variable:
   let [listofrestaurants, setlistofrestaurants] = useState(reslist);
+  let [filteredrestaurants , setfilteredrestaurants]= useState(reslist);
 
   // state variable for search button
   // when state variable updates , react trigerrs reconcilation cycle and it rereders all the body components
@@ -89,12 +90,11 @@ const Body = () => {
             className="search_btn"
             onClick={() => {
               // whenever you clicked the search button ui gets updated:: filter the list of restaurant card and update the ui::
-              const filteredlistofrestaurants = listofrestaurants.filter(
+               filteredrestaurants = listofrestaurants.filter(
                 (res) => res.info.name.includes(kyah));
 
-                console.log(filteredlistofrestaurants);
-              
-              setlistofrestaurants(filteredlistofrestaurants);
+                console.log(filteredrestaurants);
+                setfilteredrestaurants(filteredrestaurants);
             }}
           >
             Search
@@ -131,7 +131,7 @@ const Body = () => {
         </div>
 
         {/* now make it a simpler code by using js map function*/}
-        {listofrestaurants.map((restaurant) => (
+        {filteredrestaurants.map((restaurant) => (
           <Cards key={restaurant.info.id} resdata={restaurant} />
         ))}
       </div>

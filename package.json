@@ -2,7 +2,6 @@
   "name": "react1",
   "version": "1.0.0",
   "description": "\"this repo is about learning react \"",
- 
   "scripts": {
     "dev": "parcel index.html --port 3000",
     "test": "jest"
@@ -26,9 +25,11 @@
   },
   "dependencies": {
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.2"
   },
-  "browserslist":[
-     "last 2 versions"
+  "browserslist": [
+    "last 2 versions"
   ]
 }
+ 

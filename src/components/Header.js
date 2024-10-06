@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 // functional Component of Header
 const Header = () => {
   // state variable
@@ -11,15 +12,17 @@ const Header = () => {
       </div>
       <div className="navitems">
         <ul>
-          <li>Services</li>
-          <li>About</li>
+          <li><Link to="/Services">Services</Link></li>
+          <li><Link to="/about">About</Link></li>
           <li>Cart</li>
-          <li>Contact Us</li>
+          <li><Link to="/contact">Contact US</Link></li>
         </ul>
         <button
           className="log_btn"
           onClick={() => {
-            btnnameReact === "login"? setbtnnameReact("logout"):setbtnnameReact("login")
+            btnnameReact === "login"
+              ? setbtnnameReact("logout")
+              : setbtnnameReact("login");
           }}
         >
           {btnnameReact}
