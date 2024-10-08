@@ -1,6 +1,6 @@
 // functional component of Body
 
-import reslist from "../utils/data";
+// import reslist from "../utils/data";
 import Cards from "./cards";
 import { useEffect, useState } from "react";
 import reslist from "../utils/data";
@@ -9,29 +9,37 @@ import Shimmer from "./shimmer";
 const Body = () => {
   // call back function use effect
   // useEffect(() => {
-  //   fetchdata();
+  //   // fetchdata();
+
+  //   navigator.geolocation.getCurrentPosition(loc => {
+  //     console.log(loc);
+  //   }, err => {
+  //     console.log("An error occured while fetching location!");
+  //   });
   // }, []);
 
   // const fetchdata = async () => {
-  //   const dot = await fetch(
+  //   const res = await fetch(
   //     "https://www.swiggy.com/mapi/homepage/getCards?lat=28.75726989999999&lng=77.4971405"
   //   )
-  //     .then((response) => response.json())
-  //     .catch((err) => console.log("error:", err));
-  //   // convert this data to json
-  //   // const json = await dot.json();
-  //   console.log(dot);
+  //   //   .then((response) => response.json())
+  //   //   .catch((err) => console.log("error:", err));
+  //   // // convert this data to json
+  //   const json = await res.json();
+  //   console.log(json);
   //   // console.log(
-  //   //   dot?.data.success.cards[2].gridwidget.gridElements.infoWithStyle
+  //   //   json?.data.success.cards[2].gridWidget.gridElements.infoWithStyle
   //   //     .restaurants
   //   // );
 
+  //   const restaurants = json?.data.success.cards[2].gridWidget.gridElements.infoWithStyle.restaurants;
   //   // now use this real time data on website by updating the listofrestaurant::
-  //   // setlistofrestaurants(dot?.data.success.cards[2].gridwidget.gridElements.infoWithStyle.restaurants.info);
-  //   // filteredlistofrestaurants(dot?.data.success.cards[2].gridwidget.gridElements.infoWithStyle.restaurants);
+  //   setlistofrestaurants(restaurants);
+  //   // setfilteredrestaurants(restaurants);
+  //   // filteredlistofrestaurants(restaurants);
   // };
 
-  console.log("rerdendered");
+  // console.log("rerdendered");
   // this is a Normal js variable
   // let listofrestaurants = [
   //   {
@@ -108,7 +116,7 @@ const Body = () => {
             let filteredlistofrestaurants = listofrestaurants.filter(
               (res) => res.info.avgRating > 4
             );
-            console.log(filteredlistofrestaurants);
+            // console.log(filteredlistofrestaurants);
             // updating the list of restuarants::by passing the filtered values of restaurants by filter method::
             setlistofrestaurants(filteredlistofrestaurants);
           }}

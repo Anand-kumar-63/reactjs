@@ -14,8 +14,8 @@ const Cards = (props) => {
       <h4>{resdata.info.costForTwo}</h4> */}
 
       {/* after destructure is done we can simplify our code */}
-      <h3>{locality}</h3>
-      <p>{name}</p>
+      <h3>{name}</h3>
+      <p>{locality}</p>
       <h4>{cuisines.join("; ")}</h4>
       <h4>{costForTwo}</h4>
       <h4>{deliveryTime}min</h4>

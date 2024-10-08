@@ -7,7 +7,7 @@ import About from "./components/about";
 import Error from "./components/Error";
 import Services from "./components/services";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-
+import Restaurantmenu from "./components/menu";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 // functional Component of APP
@@ -41,9 +41,14 @@ const approuter = createBrowserRouter([
         path: "/Contact", 
         element: <Contact />,
       },
+      {
+        path: "/reastaurants/:resID",
+        element: <Restaurantmenu />
+      },
     ],
     errorElement: <Error />,
   },
+ 
 ]);
 // Rendering everything inside root
 root.render(<RouterProvider router={approuter} />);
