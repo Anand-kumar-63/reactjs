@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
 import Contact from "./components/contact";
-import About from "./components/about";
+import About from "./components/About";
 import Error from "./components/Error";
 import Services from "./components/services";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";

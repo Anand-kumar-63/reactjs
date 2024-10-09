@@ -116,3 +116,9 @@ body .Body{
   flex-direction:row;
   gap: 30px;
 }
+.user{
+  /* height: 50px; */
+  /* width: 50px; */
+  border: 1px solid black;
+  /* width: auto; */
+}

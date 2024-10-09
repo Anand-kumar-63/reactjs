@@ -16,12 +16,11 @@ const Restaurantmenu = () => {
     console.log(json);
     setmenuinfo(json.data);
   };
-  
+
 if(menuinfo === null) return <Shimmer />;
 
-// const {name , cuisines , costfortwo} = 
-
-// const {itemcards} = 
+const { itemCards } = menuinfo?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards[5]?.card?.card;
+// console.log(itemCard);
   return (
     <div className="menu">
       <h1>Name o fthe restaurant</h1>
