@@ -8,8 +8,8 @@ const User = (props) =>{
     <div>Name:{props.name}</div>
     <div>Email: anand@gmail.com</div>
     <div>Contact: {props.Contact}</div>
-    <div>Count:{count}</div>
-    <div>Count1:{count1}</div>
+    {/* <div>Count:{count}</div>
+    <div>Count1:{count1}</div> */}
     </div>
   )
 }
