@@ -1,32 +1,39 @@
-import { useEffect, useState } from "react";
-import { json } from "react-router-dom";
+// import { useEffect, useState } from "react";
 import Shimmer from "./shimmer";
+import { useParams } from "react-router-dom";
+import { MENU_API } from "../utils/constants";
+import  useRestaurantMenu  from "../utils/useRestaurantmenu";
 
 const Restaurantmenu = () => {
   const [menuinfo , setmenuinfo] = useState([]);
-  useEffect(() => {
-    fetchMenu();
-  }, []);
+  const {resID} = useParams();
+// //  use effect to fetch data when one time render occurs::
+//   useEffect(() => {
+//     fetchMenu();
+//   }, []);
+// // fetching the data and coverting the data to json and then updating the menuinfo:
+//   const fetchMenu = async () => {
+//     const data = await fetch(MENU_API + resID);
+//     const datajson = await data.json();
+//     console.log(datajson);
+//     setmenuinfo(datajson);
+//   };
 
-  const fetchMenu = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.75726989999999&lng=77.4971405&restaurantId=703870&submitAction=ENTER"
-    );
-    const json = await data.json();
-    console.log(json);
-    setmenuinfo(json.data);
-  };
+// we are creating a new component(Hook) for extracting the data form api and giving it a responsiblility ::
+const giveninfo= useRestaurantMenu(resID);
+setmenuinfo(giveninfo);
+const { itemCards } = menuinfo?.data?.cards?.[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.[3]?.card?.card;
+console.log(itemCards);
 
-if(menuinfo === null) return <Shimmer />;
+// const {name,cuisines,costForTwoMessage,costForTwo,cloudinaryImageId,avgRating,deliveryTime} =
+//  menuinfo?.data.cards?.[2]?.card?.card?.info;
 
-const { itemCards } = menuinfo?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards[5]?.card?.card;
-// console.log(itemCard);
-  return (
+  return (menuinfo === null)?<Shimmer />:(
     <div className="menu">
-      <h1>Name o fthe restaurant</h1>
-      <h2>menu items</h2>
+      <h1>kya h</h1>
+      <h2>kya h be</h2>
       <ul>
-        <li>egg omelete</li>
+        <li>hello</li>
         <li>biriyani</li>
         <li>lassi</li>
       </ul>
