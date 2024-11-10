@@ -62,19 +62,20 @@ const Body = () => {
   return listofrestaurants.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="Body">
-      <div className="filters">
-        <div className="searchbar">
-          <input
+    <div className="bg-pink-100 ">
+      <div className="flex ml-16">
+        <div className="">
+          <input className="bg-slate-200 font-serif from-neutral-900 p-1 rounded-lg"
             type="text"
             id="text"
+            placeholder="you can search here.."
             value={kyah}
             onChange={(e) => {
               setkyah(e.target.value);
             }}
           />
           <button
-            className="search_btn"
+            className=" m-4 shadow-lg bg-gray-300 rounded-md px-6 py-1"
             onClick={() => {
               // whenever you clicked the search button ui gets updated:: filter the list of restaurant card and update the ui::
               const filteredrestaurants = listofrestaurants.filter((res) =>
@@ -90,7 +91,7 @@ const Body = () => {
         </div>
         {/* updating the list of restaurants by using filter those restaurants having rating greater than 4 on clicking the button::*/}
         <button
-          className="filter_btn"
+          className=" m-4 shadow-lg bg-gray-300 rounded-md px-6 py-1"
           onClick={() => {
             // we are using array dot filtered method to filter the list of restaurants::
             let filteredrestaurants = listofrestaurants.filter(
@@ -105,7 +106,7 @@ const Body = () => {
         </button>
       </div>
 
-      <div className="res_cards">
+      <div className=" m-10 flex flex-wrap">
         <div>
           {" "}
           {/* <Cards  resdata= {reslist[0]}/>

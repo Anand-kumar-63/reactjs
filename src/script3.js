@@ -15,7 +15,7 @@ import Restaurantmenu from "./components/menu";
 // * Chunking---making seperate bundle for big components so that when website loads that component doesnt load until it called it decreases the loading time of the website it optimises the website
 // * or Code Splitting
 // * or Dynamic Bundling
-// * Lazy Loading--its a component imported from react see when grocery is clicked its component or bulndle takes 12ms to load but react is so fast when grocery is clicked react things there is no data so react gives error so to stop this lazy component is used
+// * Lazy Loading--its a component imported from react see when grocery is clicked its component or bulndle takes 12ms to load but react is so fast when grocery is clicked react thinks there is no data so react gives error so to stop this error lazy component is used
 // * or On-Demand Loading
 // * Dynamic Import
 

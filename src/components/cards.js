@@ -5,8 +5,8 @@ const Cards = (props) => {
   const{locality,name,cuisines,costForTwo,deliveryTime,avgRating}= resdata?.info;
 
   return (
-    <div className="card">
-      <img  id="Card_image" src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + resdata.info.cloudinaryImageId} />
+    <div className="m-4 p-4 w-[250px] h-auto bg-gray-200 rounded-lg hover:bg-gray-300 transition-all">
+      <img className="w-[250px] h-[150px] rounded-lg" id="Card_image" src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + resdata.info.cloudinaryImageId} />
       {/*when destructure is not done  */}
       {/* <h3>{resdata.data.locality}</h3>
       <p>{resdata.info.name}</p>
@@ -14,7 +14,7 @@ const Cards = (props) => {
       <h4>{resdata.info.costForTwo}</h4> */}
 
       {/* after destructure is done we can simplify our code */}
-      <h3>{name}</h3>
+      <h3 className="font-bold py-4 text-lg">{name}</h3>
       <p>{locality}</p>
       <h4>{cuisines.join("; ")}</h4>
       <h4>{costForTwo}</h4>
