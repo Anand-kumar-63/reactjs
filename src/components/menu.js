@@ -1,8 +1,8 @@
 // import { useEffect, useState } from "react";
-import Shimmer from "./shimmer";
+import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import { MENU_API } from "../utils/constants";
-import  useRestaurantMenu  from "../utils/useRestaurantmenu";
+import  useRestaurantMenu  from "../utils/useRestaurantMenu";
 
 const Restaurantmenu = () => {
   const [menuinfo , setmenuinfo] = useState([]);
@@ -41,4 +41,4 @@ console.log(itemCards);
   );
 };
 
-export default Restaurantmenu;
+// export default Restaurantmenu;

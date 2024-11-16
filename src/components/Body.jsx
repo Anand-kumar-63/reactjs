@@ -1,9 +1,11 @@
 import reslist from "../utils/data";
-import Cards from "./cards";
+import Cards, { withpromotedlabel } from "./cards";
 import { useEffect, useState } from "react";
 import reslist from "../utils/data";
-import Shimmer from "./shimmer";
+import Shimmer from "./Shimmer";
 import useOnlineStatus from "./useOnlineStatus";
+// we use link instead of anchor tag because it doesnt refreshes my page:
+import { Link } from "react-router-dom";
 // import Restaurantmenu from "../utils/useRestaurantmenu";
 
 const Body = () => {
@@ -42,6 +44,7 @@ const Body = () => {
     setfilteredlistofrestaurants(restaurants);
   };
 
+  const pormotedcard = withpromotedlabel(Cards);
   // importing the custom hook and using it to update the list of restaurants and filteredlistofreastaurants
   // const { data , error } = Restaurantmenu();
   // useEffect(() => {
@@ -65,7 +68,8 @@ const Body = () => {
     <div className="bg-pink-100 ">
       <div className="flex ml-16">
         <div className="">
-          <input className="bg-slate-200 font-serif from-neutral-900 p-1 rounded-lg"
+          <input
+            className="bg-slate-200 font-serif from-neutral-900 p-1 rounded-lg"
             type="text"
             id="text"
             placeholder="you can search here.."
@@ -106,9 +110,9 @@ const Body = () => {
         </button>
       </div>
 
-      <div className=" m-10 flex flex-wrap">
-        <div>
-          {" "}
+      <div>
+        <div className="m-10 flex flex-wrap">
+
           {/* <Cards  resdata= {reslist[0]}/>
         <Cards  resdata = {reslist[1]}/>
         <Cards  resdata = {reslist[2]}/> 
@@ -117,12 +121,36 @@ const Body = () => {
         <Cards  resdata = {reslist[5]}/> 
         <Cards  resdata = {reslist[6]}/> 
         <Cards  resdata = {reslist[7]}/>  */}
-        </div>
-
-        {/* now make it a simpler code by using js map function*/}
-        {filteredlistofrestaurants.map((restaurant) => (
-          <Cards key={restaurant.info.id} resdata={restaurant} />
+        {/* </div>
+        now make it a simpler code by using js map function
+        {filteredlistofrestaurants.map((restaurant) =>
+          restaurant.data && restaurant.data.promoted ? (
+            <PromotedCard key={restaurant.data.id} resData={restaurant} />
+          ) : (
+            <Cards key={restaurant.data?.id} resData={restaurant} />
+          )
+        )} */}
+        
+         {/* // * looping through the <RestaurentCard /> components Using Array.map() method */}
+{/* when you use map method alwasys use key for every element */}
+         {filteredlistofrestaurants.map((restaurant) => (
+          <Link
+            style={{
+              textDecoration: 'none',
+              color: '#000',
+            }}
+            key={restaurant?.data?.id}
+            to={'/restaurants/:' + (restaurant?.data?.id || '')}
+            
+          >
+            {restaurant.data?.promoted ? (
+              <RestaurantCardPromoted resData={restaurant} />
+            ) : (
+              <Cards  resData={restaurant} />
+            )}
+          </Link>
         ))}
+        </div>
       </div>
     </div>
   );

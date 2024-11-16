@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { useState,useContext } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "./useOnlineStatus";
+import UserContext from "../utils/Usercontext";
 // functional Component of Header
 const Header = () => {
   // state variable
+  // data from context file
+  const {loggedInUser}= useContext(UserContext);
+
   const [btnnameReact, setbtnnameReact] = useState("login");
    const OnlineStatus = useOnlineStatus();
   return (
@@ -34,6 +38,7 @@ const Header = () => {
         >
           {btnnameReact}
         </button>
+        <div>user:{loggedInUser}</div>
       </div>
     </div>
   );
